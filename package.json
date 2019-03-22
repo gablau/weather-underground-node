@@ -1,0 +1,58 @@
+{
+  "name": "weather-underground-node",
+  "version": "0.1.0",
+  "main": "./lib/weather-underground-node.js",
+  "description": "Weather underground client for node.js - NEW 2019 API from The Weather Company (IBM) only for PWS owners",
+  "homepage": "http://www.github.com/gablau/weather-underground-node",
+  "keywords": [
+    "weather",
+    "wunderground",
+    "weather underground",
+    "weather underground new",
+    "weather underground api",
+    "weather underground new api",
+    "weather.com",
+    "weatherunderground.com",
+    "weather station",
+    "personal weather station",
+    "PWS",
+    "The Weather Company",
+    "IBM weather"
+
+  ],
+  "author": "Gabriele Lauricella <gab.lau@gmail.com> (https://github.com/gablau)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/gablau/weather-underground-node/LICENSE"
+    }
+  ],
+  "dependencies": {
+    "request": "2.x"
+  },
+  "devDependencies": {
+    "cross-dotenv": "^1.0.4",
+    "env-cmd": "^8.0.2",
+    "mocha": "*",
+    "nyc": "^13.3.0",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/cross-dotenv NODE_ENV=test ./node_modules/.bin/mocha  --reporter Spec",
+    "coverage": "./node_modules/.bin/cross-dotenv NODE_ENV=test ./node_modules/.bin/nyc --reporter=html --reporter=text mocha"
+  },
+  "engines": {
+    "node": ">=0.8.14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gablau/weather-underground-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gablau/weather-underground-node/issues"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT"
+}

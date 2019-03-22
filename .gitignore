@@ -1,0 +1,6 @@
+coverage
+.idea
+node_modules
+/test/devkey
+.nyc_output
+prova.js
