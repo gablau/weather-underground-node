@@ -84,6 +84,9 @@ wunderground.PWSHistoryDaily("IROME228", "20190309").request(function (err, resp
 }
 ```
 
+## Units
+Imperial/english units can be requested by setting the second parameter to `true` when contstructing `WeatherUndergroundNode`.
+
 ## Running Unit Tests and Code coverage
 
 In order to run unit tests you need to include your apykey in .env file in the root directory.
