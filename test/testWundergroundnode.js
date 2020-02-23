@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 require("should");
 var WeatherUndergroundNode = require("./../lib/weather-underground-node");
-var fs = require("fs");
-var util = require("util");
 
 describe("Testing Weather Underground Node:", function () {
 	"use strict";
@@ -34,8 +32,6 @@ describe("Testing Weather Underground Node:", function () {
 		done();	
 	});
 
-	
-
 	it("Request - Wrong chain.", function(done){
 
 		validApikey.should.be.true(apykeyMessage);
@@ -45,7 +41,7 @@ describe("Testing Weather Underground Node:", function () {
 		}, /You must specify a resource to request first \(e.g., .PWSCurrentContitions\(\).req...\)/);
 		done();	
 	});
-
+	
 	it("Request PWS conditions.", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
@@ -123,7 +119,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.PWSRecentHistory1Day("IROME228").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.property("observations");
 			response.observations.should.be.Array();
 			response.observations.length.should.greaterThan(0);
@@ -138,7 +133,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.PWSRecentHistory7Day("IROME228").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.property("observations");
 			response.observations.should.be.Array();
 			response.observations.length.should.greaterThan(0);
@@ -153,7 +147,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.PWSHistoryHourly("IROME228", "20190309").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.property("observations");
 			response.observations.should.be.Array();
 			response.observations.length.should.be.greaterThan(0);
@@ -168,7 +161,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.PWSHistoryAll("IROME228", "20190309").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.property("observations");
 			response.observations.should.be.Array();
 			response.observations.length.should.be.greaterThan(0);
@@ -183,7 +175,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.PWSHistoryDaily("IROME228", "20190309").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.property("observations");
 			response.observations.should.be.Array();
 			response.observations.length.should.be.exactly(1);
@@ -193,14 +184,11 @@ describe("Testing Weather Underground Node:", function () {
 
 	});
 
-
-
 	it("Request Forecast 5 day by Postal code", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByPostalCode("00178", "IT").Language("en-EN").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -210,27 +198,24 @@ describe("Testing Weather Underground Node:", function () {
 
 	});
 
-
-
 	it("Request Forecast 5 day by Postal code, wrong postal code", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByPostalCode("00100", "IT").Language("en-EN").request(function (err, response) {
-			response.should.be.false();
+			err.should.have.properties(["code", "msg"]);
+			err.code.should.be.exactly(404);
+			err.msg.should.be.exactly("Not found. The endpoint requested is not found.");
 			done();
 		});
 
 	});
-
-
 
 	it("Request Forecast 5 day by Postal code with different language", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByPostalCode("00178", "IT").Language("it-IT").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -245,7 +230,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByGeocode("41.843", "12.666").Language("en-EN").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -273,7 +257,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByIataCode("FCO").Language("en-EN").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -301,7 +284,6 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByIcaoCode("LIRF").Language("en-EN").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -311,13 +293,11 @@ describe("Testing Weather Underground Node:", function () {
 
 	});
 
-
 	it("Request Forecast 5 day by Place ID", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
 		wunderground.ForecastDaily().FiveDay().ByPlaceID("327145917e06d09373dd2760425a88622a62d248fd97550eb4883737d8d1173b").Language("en-EN").request(function (err, response) {
-			//console.log(util.inspect(response, { compact: true, depth: 1, breakLength: 80 }));
 			response.should.have.properties("dayOfWeek", "narrative", "temperatureMax", "temperatureMin");
 			response.dayOfWeek.should.be.Array();
 			response.dayOfWeek.length.should.be.exactly(6);
@@ -378,7 +358,6 @@ describe("Testing Weather Underground Node:", function () {
 
 	});
 
-
 	it("Request Location search by address", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
@@ -387,7 +366,7 @@ describe("Testing Weather Underground Node:", function () {
 			response.should.have.property("location");
 			response.location.should.have.properties("address", "city", "country", "placeId");
 			response.location.address.should.be.Array();
-			response.location.address.length.should.be.greaterThan(2);;
+			response.location.address.length.should.be.greaterThan(2);
 			done();
 		});
 
@@ -462,7 +441,6 @@ describe("Testing Weather Underground Node:", function () {
 
 	});
 
-
 	it("Request Location point by LocId", function (done) {
 
 		validApikey.should.be.true(apykeyMessage);
@@ -474,7 +452,6 @@ describe("Testing Weather Underground Node:", function () {
 		});
 
 	});
-
 
 	it("Request Location near by Geocode", function (done) {
 
