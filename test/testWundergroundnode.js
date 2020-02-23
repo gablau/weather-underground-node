@@ -13,8 +13,8 @@ describe("Testing Weather Underground Node:", function () {
 	var apykeyMessage = "Invalid apikey / You must save your own apikey in .env file to run test";
 	var validApikey = false;
 
-	var weekDayIT = ["lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato"];
-	var weekDayEN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	var weekDayIT = ["lunedì", "martedì", "mercoledì", "giovedì", "venerdì", "sabato", "domenica"];
+	var weekDayEN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 	it("API KEY check.", function (done) {
 
