@@ -57,7 +57,7 @@ The documentation for each resource can be found here: [APIs documentation for P
 So to get the current conditions you would use the following code, where `IROME288` is a PWS station ID:
 
 ```js
-wunderground.PWSCurrentContitions("IROME228").request(function (err, response)
+wunderground.PWSCurrentContitions("IROME228").request(function (err, response) {
     console.log(response);
 }
 ```
