@@ -25,7 +25,7 @@ https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY/
 npm install --save weather-underground-node
 
 ```js
-var WeatherUndergroundNode = require('wundergroundnode');
+var WeatherUndergroundNode = require('weather-underground-node');
 var myApyKey = 'B5792DB9271ED8697F671F8FBBE49E43';
 var wunderground = new WeatherUndergroundNode(myApyKey);
 ```
