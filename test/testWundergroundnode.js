@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 require("should");
 var WeatherUndergroundNode = require("./../lib/weather-underground-node");
@@ -27,7 +28,7 @@ describe("Testing Weather Underground Node:", function () {
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey+"xxxxx");
 		should.throws(function () {
-			wunderground.PWSCurrentContitions("IROME228").request("");
+			wunderground.PWSCurrentConditions("IROME228").request("");
 		}, /Argument must be a function/);
 		done();	
 	});
@@ -38,7 +39,7 @@ describe("Testing Weather Underground Node:", function () {
 		var wunderground = new WeatherUndergroundNode(apikey+"xxxxx");
 		should.throws(function () {
 			wunderground.request("");
-		}, /You must specify a resource to request first \(e.g., .PWSCurrentContitions\(\).req...\)/);
+		}, /You must specify a resource to request first \(e.g., .PWSCurrentConditions\(\).req...\)/);
 		done();	
 	});
 	
@@ -46,7 +47,7 @@ describe("Testing Weather Underground Node:", function () {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
-		wunderground.PWSCurrentContitions("IROME228").request(function (err, response) {
+		wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
 			response.should.have.property("observations");
 			response.observations.should.is.Array();
 			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon"]);
@@ -62,7 +63,7 @@ describe("Testing Weather Underground Node:", function () {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey, true);
-		wunderground.PWSCurrentContitions("IROME228").request(function (err, response) {
+		wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
 			response.should.have.property("observations");
 			response.observations.should.is.Array();
 			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon"]);
@@ -78,7 +79,7 @@ describe("Testing Weather Underground Node:", function () {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey + "xxxxx");
-		wunderground.PWSCurrentContitions("IROME228").request(function (err, response) {
+		wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
 			err.should.have.properties(["code", "msg"]);
 			err.code.should.be.exactly(401);
 			err.msg.should.be.exactly("Unauthorized. The request requires authentication.");
@@ -91,7 +92,7 @@ describe("Testing Weather Underground Node:", function () {
 
 		validApikey.should.be.true(apykeyMessage);
 		var wunderground = new WeatherUndergroundNode(apikey);
-		wunderground.PWSCurrentContitions("IROME228aaaaaa").request(function (err, response) {
+		wunderground.PWSCurrentConditions("IROME228aaaaaa").request(function (err, response) {
 			response.should.not.have.property("observations");
 			err.should.have.properties(["code", "msg"]);
 			err.code.should.be.exactly(204);
