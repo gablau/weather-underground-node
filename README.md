@@ -25,7 +25,7 @@ https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY/
 npm install --save weather-underground-node
 
 ```js
-var WeatherUndergroundNode = require('wundergroundnode');
+var WeatherUndergroundNode = require('weather-underground-node');
 var myApyKey = 'B5792DB9271ED8697F671F8FBBE49E43';
 var wunderground = new WeatherUndergroundNode(myApyKey);
 ```
@@ -37,7 +37,7 @@ The syntax follows a simple pattern:
     
 The available resource calls are the following (you must include one in your request):
 
-- PWSCurrentContitions
+- PWSCurrentConditions
 - PWSDailySummary7Day
 - PWSRecentHistory1Day
 - PWSRecentHistory7Day
@@ -57,7 +57,7 @@ The documentation for each resource can be found here: [APIs documentation for P
 So to get the current conditions you would use the following code, where `IROME288` is a PWS station ID:
 
 ```js
-wunderground.PWSCurrentContitions("IROME228").request(function (err, response)
+wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
     console.log(response);
 }
 ```
