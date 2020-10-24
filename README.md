@@ -59,7 +59,7 @@ So to get the current conditions you would use the following code, where `IROME2
 ```js
 wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
     console.log(response);
-}
+});
 ```
 
 To get 5 day forecast by postal code:
@@ -67,7 +67,7 @@ To get 5 day forecast by postal code:
 ```js
 wunderground.ForecastDaily().FiveDay().ByPostalCode("00178", "IT").Language("en-EN").request(function (err, response) {
         console.log(response);
-}
+});
 ```
 
 To get 5 day forecast by geocode wit Italian language:
@@ -75,14 +75,18 @@ To get 5 day forecast by geocode wit Italian language:
 ```js
 wunderground.ForecastDaily().FiveDay().ByGeocode("41.860", "12.470").Language("it-IT").request(function (err, response) {(function (err, response) {
         console.log(response);
-}
+});
 ```
 To get daily historic data:
 
 ```js
-wunderground.PWSHistoryDaily("IROME228", "20190309").request(function (err, response) {                 console.log(response);
-}
+wunderground.PWSHistoryDaily("IROME228", "20190309").request(function (err, response) {
+        console.log(response);
+});
 ```
+
+## Units
+Imperial/english units can be requested by adding `InImperialUnits()` or `InEnglishUnits()` to the chain. (default: Metric units)
 
 ## Running Unit Tests and Code coverage
 

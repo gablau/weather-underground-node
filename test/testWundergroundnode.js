@@ -50,7 +50,7 @@ describe("Testing Weather Underground Node:", function () {
 		wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
 			response.should.have.property("observations");
 			response.observations.should.is.Array();
-			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon"]);
+			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon", "metric"]);
 			response.observations[0].stationID.should.be.exactly("IROME228");
 			response.observations[0].country.should.be.exactly("IT");
 			response.observations[0].softwareType.should.be.exactly("NodeRed");
@@ -66,7 +66,55 @@ describe("Testing Weather Underground Node:", function () {
 		wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
 			response.should.have.property("observations");
 			response.observations.should.is.Array();
-			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon"]);
+			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon", "metric"]);
+			response.observations[0].stationID.should.be.exactly("IROME228");
+			response.observations[0].country.should.be.exactly("IT");
+			response.observations[0].softwareType.should.be.exactly("NodeRed");
+			done();
+		});
+
+	});
+
+	it("Request PWS conditions - in imperial units.", function (done) {
+
+		validApikey.should.be.true(apykeyMessage);
+		var wunderground = new WeatherUndergroundNode(apikey);
+		wunderground.PWSCurrentConditions("IROME228").InImperialUnits().request(function (err, response) {
+			response.should.have.property("observations");
+			response.observations.should.is.Array();
+			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon", "imperial"]);
+			response.observations[0].stationID.should.be.exactly("IROME228");
+			response.observations[0].country.should.be.exactly("IT");
+			response.observations[0].softwareType.should.be.exactly("NodeRed");
+			done();
+		});
+
+	});
+
+	it("Request PWS conditions - in english units.", function (done) {
+
+		validApikey.should.be.true(apykeyMessage);
+		var wunderground = new WeatherUndergroundNode(apikey);
+		wunderground.PWSCurrentConditions("IROME228").InEnglishUnits().request(function (err, response) {
+			response.should.have.property("observations");
+			response.observations.should.is.Array();
+			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon", "imperial"]);
+			response.observations[0].stationID.should.be.exactly("IROME228");
+			response.observations[0].country.should.be.exactly("IT");
+			response.observations[0].softwareType.should.be.exactly("NodeRed");
+			done();
+		});
+
+	});
+
+	it("Request PWS conditions - in metric units.", function (done) {
+
+		validApikey.should.be.true(apykeyMessage);
+		var wunderground = new WeatherUndergroundNode(apikey);
+		wunderground.PWSCurrentConditions("IROME228").InMetricUnits().request(function (err, response) {
+			response.should.have.property("observations");
+			response.observations.should.is.Array();
+			response.observations[0].should.have.properties(["stationID", "softwareType", "country", "lat", "lon", "metric"]);
 			response.observations[0].stationID.should.be.exactly("IROME228");
 			response.observations[0].country.should.be.exactly("IT");
 			response.observations[0].softwareType.should.be.exactly("NodeRed");
