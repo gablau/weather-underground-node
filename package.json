@@ -1,6 +1,6 @@
 {
   "name": "weather-underground-node",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "main": "./lib/weather-underground-node.js",
   "description": "Weather underground client for node.js - NEW 2019 API from The Weather Company (IBM) only for PWS owners",
   "homepage": "http://www.github.com/gablau/weather-underground-node",
