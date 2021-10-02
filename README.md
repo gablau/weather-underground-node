@@ -32,9 +32,15 @@ var wunderground = new WeatherUndergroundNode(myApyKey);
 
 ## How To Use
 The syntax follows a simple pattern:
-    
-    wunderground.[resource call(s)].request(callback);
-    
+```js    
+    wunderground.[resource call(s)].request(function (err, response) {
+                console.log(response);
+        }););
+```    
+or with sync method     
+```js
+    const result = await wunderground.[resource call(s)].requestSync();
+```    
 The available resource calls are the following (you must include one in your request):
 
 - PWSCurrentConditions
@@ -54,10 +60,10 @@ The available resource calls are the following (you must include one in your req
 
 The documentation for each resource can be found here: [APIs documentation for PWS Contributors](https://docs.google.com/document/d/1eKCnKXI9xnoMGRRzOL1xPCBihNV2rOet08qpE_gArAY/edit).
 
-So to get the current conditions you would use the following code, where `IROME288` is a PWS station ID:
+So to get the current conditions you would use the following code, where `IROME7475` is a PWS station ID:
 
 ```js
-wunderground.PWSCurrentConditions("IROME228").request(function (err, response) {
+wunderground.PWSCurrentConditions("IROME7475").request(function (err, response) {
     console.log(response);
 });
 ```
@@ -73,14 +79,14 @@ wunderground.ForecastDaily().FiveDay().ByPostalCode("00178", "IT").Language("en-
 To get 5 day forecast by geocode wit Italian language:
 
 ```js
-wunderground.ForecastDaily().FiveDay().ByGeocode("41.860", "12.470").Language("it-IT").request(function (err, response) {(function (err, response) {
+wunderground.ForecastDaily().FiveDay().ByGeocode("41.89", "12.444").Language("it-IT").request(function (err, response) {(function (err, response) {
         console.log(response);
 });
 ```
 To get daily historic data:
 
 ```js
-wunderground.PWSHistoryDaily("IROME228", "20190309").request(function (err, response) {
+wunderground.PWSHistoryDaily("IROME7475", "20190309").request(function (err, response) {
         console.log(response);
 });
 ```
@@ -90,7 +96,12 @@ Imperial/english units can be requested by adding `InImperialUnits()` or `InEngl
 
 ## Running Unit Tests and Code coverage
 
-In order to run unit tests you need to include your apykey in .env file in the root directory.
+In order to run unit tests you need to include your apykey and your PWS station id in .env file and set in the root directory.
+```bash
+NODE_ENV=test
+WU_APY_KEY=B5792DB9271ED8697F671F8FBBE49E43
+WU_STATION_ID=YOUR_STATION_ID_HERE
+```
 
 Then simply run test this command: ```npm run test```
 
