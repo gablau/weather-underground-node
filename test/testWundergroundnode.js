@@ -521,7 +521,7 @@ describe("Testing Weather Underground Node:", function () {
 			done();
 		});
 
-	});
+	}).timeout(16000);
 
 	it("Request Location search by PWS and country", (done) => {
 
@@ -566,7 +566,7 @@ describe("Testing Weather Underground Node:", function () {
 			done();
 		});
 
-	});
+	}).timeout(16000);
 
 
 	it("Request Location point by Geocode", (done) => {

@@ -1,4 +1,14 @@
 # Weather underground client for node.js
+
+[![npm version](https://img.shields.io/npm/v/weather-underground-node.svg)](https://www.npmjs.com/package/weather-underground-node)
+[![Npm download](https://img.shields.io/npm/dm/weather-underground-node.svg)](https://www.npmjs.com/package/weather-underground-node)
+[![GitHub stars](https://img.shields.io/github/stars/gablau/weather-underground-node.svg)](https://github.com/gablau/weather-underground-node/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/gablau/weather-underground-node.svg)](https://github.com/gablau/weather-underground-node/issues)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/gablau/weather-underground-node/blob/master/LICENSE)
+
+[![NPM](https://nodei.co/npm/weather-underground-node.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/weather-underground-node)
+
+---
 ## NEW 2019 API from The Weather Company (IBM) only for PWS owners
 
 The Weather Company (IBM), which acquired Weather Underground in 2012, withdrew the API Weather Underground in March 2019 (see: [End of Service for the Weather Underground API](https://web.archive.org/web/20200220003108/https://apicommunity.wunderground.com/weatherapi/topics/end-of-service-for-the-weather-underground-api) last update 20-02-2020 by [WaybackMachine](https://web.archive.org/))
