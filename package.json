@@ -1,6 +1,6 @@
 {
   "name": "weather-underground-node",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "main": "./lib/weather-underground-node.js",
   "description": "Weather underground client for node.js - NEW 2019 API from The Weather Company (IBM) only for PWS owners",
   "homepage": "http://www.github.com/gablau/weather-underground-node",
@@ -30,9 +30,9 @@
   "devDependencies": {
     "cross-dotenv": "^1.x",
     "env-cmd": "^10.x",
-    "mocha": "^11.x",
-    "nock": "^13.x",
-    "nyc": "^17.x",
+    "mocha": "^12.x",
+    "nock": "^14.x",
+    "nyc": "^18.x",
     "should": "^13.x"
   },
   "scripts": {
